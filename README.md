@@ -14,6 +14,10 @@ To save the replay buffer press `Alt + F10`. You can change this key in `Setting
 
 > Autostarting is automatically enabled when you use the `install.cmd` script.
 
-To enable autostarting execute the `enableAutostart.reg` file. This will make OBS autostart and automatically start the replay buffer with the correct profile and scene.
+To enable autostarting execute the `enableAutostart.reg` file and copy the script from `scripts\obsshadow.ps1` to `%appdata%\obs-studio\scripts`. This will make OBS autostart and automatically start the replay buffer with the correct profile and scene.
 
 You can disable autostarting with the `disableAutostart.reg` file.
+
+### Known Issues
+
+It's seems like Windows can't sleep while the OBS replay buffer is active.
