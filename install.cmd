@@ -3,9 +3,11 @@
 SET DIR=%~dp0
 SET DIR=%DIR:~0,-1%
 
-SET TARGET=%appdata%\obs-studio\basic
+SET TARGET=%appdata%\obs-studio
 
-robocopy /njh /njs /ndl /nc /ns /s %DIR%\profiles %TARGET%\profiles
-robocopy /njh /njs /ndl /nc /ns /s %DIR%\scenes %TARGET%\scenes
+robocopy /njh /njs /ndl /nc /ns /s %DIR%\profiles %TARGET%\basic\profiles
+robocopy /njh /njs /ndl /nc /ns /s %DIR%\scenes %TARGET%\basic\scenes
 
-reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run" /f /v OBSShadow /d "\"C:\Program Files (x86)\obs-studio\bin\64bit\obs64.exe\" --collection Shadow --profile Shadow --scene ShadowDefault --minimize-to-tray --startreplaybuffer"
+robocopy /njh /njs /ndl /nc /ns %DIR%\scripts %TARGET%\scripts
+
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run" /f /v OBSShadow /d "powershell -ExecutionPolicy Bypass \"%TARGET%\scripts\obsshadow.ps1\""
